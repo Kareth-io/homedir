@@ -1,0 +1,65 @@
+#Color Ref https://www.w3schools.com/colors/colors_hexadecimal.asp
+#Doc https://starship.rs/config/#prompt
+
+format = """
+$hostname\
+$git_branch\
+$git_status\
+\n\
+$username\
+$directory\
+$c\
+$elixir\
+$elm\
+$golang\
+$haskell\
+$java\
+$julia\
+$nodejs\
+$nim\
+$rust\
+$docker_context\
+$time\
+\n❯\
+"""
+
+add_newline = true
+
+[username]
+show_always = true
+style_user = "bg:#627879"
+style_root = "bg:#627879"
+format = '[Kareth]($style)'
+
+[directory]
+style = "bg:#00818d"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[docker_context]
+symbol = "🐳 "
+style = "bg:#06969A"
+
+[time]
+disabled = false
+use_12hr=true
+utc_time_offset = '-5'
+time_format = "%r" 
+style = "bg:#33658A"
+format = '[[ $time ](bg:#33658A)]($style)'
+
+[hostname]
+ssh_only = false
+format = '[\[$hostname\]](bold red)'
+trim_at = ''
+disabled = false
+
+
+[git_status]
+ahead = '⇡${count}'
+diverged = '⇕⇡${ahead_count}⇣${behind_count}'
+behind = '⇣${count}'
+
+[git_branch]
+format=' | [$symbol$branch(:$remote_branch)]($style) '
