@@ -27,9 +27,9 @@ Adding `alias vim='nvim'` is preferable as well.
   * [Source](https://github.com/nvim-telescope/telescope.nvim)
   * [Config](https://github.com/Kareth-io/homedir/blob/main/nvim/lua/plugin/telescope.lua)
   * Binds
-    * <space>pf **__>__** find_files
-    * <space>fg **__>__** live_grep
-    * <space>ps **__>__** ripgrep
+    * \<space\>pf **__>__** find_files
+    * \<space\>fg **__>__** live_grep
+    * \<space\>ps **__>__** ripgrep
     * ctrl+p **__>__** find_files (limited to local git repo)
 * Code Highlighting (Treesitter)
     * [Source](https://github.com/nvim-treesitter/nvim-treesitter)
@@ -38,7 +38,7 @@ Adding `alias vim='nvim'` is preferable as well.
     * [Source](https://github.com/ThePrimeagen/harpoon)
     * [Config](https://github.com/Kareth-io/homedir/blob/main/nvim/lua/plugin/harpoon.lua)
     * Binds
-        * <space>a **__>__** Add file to pins
+        * \<space\>a **__>__** Add file to pins
         * ctrl + e **__>__** Open Harpoon UI
         * ctrl + h 1 **__>__** Quick swap to Pin 1
         * ctrl + h 2 **__>__** Quick swap to Pin 2
@@ -49,7 +49,7 @@ Adding `alias vim='nvim'` is preferable as well.
     * [Source](https://github.com/tpope/vim-fugitive)
     * [Config](https://github.com/Kareth-io/homedir/blob/main/nvim/lua/plugin/fugitive.lua)
     * Binds
-        * <space>gs **__>__** Show Git Status
+        * \<space\>gs **__>__** Show Git Status
 * Color Scheme (Rose Pine)
     * [Source](https://github.com/rose-pine/neovim)
     * [Config](https://github.com/Kareth-io/homedir/blob/main/nvim/lua/plugin/colorscheme.lua)
