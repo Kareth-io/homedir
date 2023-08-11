@@ -7,6 +7,7 @@
 	cd neovim
 	git checkout stable
 	make CMAKE_BUILD_TYPE=RelWithDebInfo
+    make install
 	ln -s /usr/local/bin/nvim /usr/bin/nvim
 
     #Installing deps for LSP and Telescope
