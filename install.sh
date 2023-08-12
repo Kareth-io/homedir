@@ -18,12 +18,15 @@ run () {
                 ;;
             neovim|nvim)
                 echo "Installing Neovim";
+                install_neovim
                 ;;
             *)
                 echo "Unknown option: ${target}"
         esac
     done
     echo "Finished!"
+    echo "You may need to run: source ${HOME}/.bashrc"
+    echo "To fully initialize everything"
 }
 
 install_starship () {
@@ -32,11 +35,11 @@ install_starship () {
     curl -sS https://starship.rs/install.sh | sh
     
     echo "Updating bashrc"
-    modified_bashrc=$(grep -Ev "^#" ${BASHRC} | fgrep 'eval "$(starship init bash)"')
+    local modified_bashrc=$(grep -Ev "^#" ${BASHRC} | fgrep 'eval "$(starship init bash)"')
     if [[ -n "${modified_bashrc}" ]]; then
         echo "Starship already enabled!"
     else
-        echo 'eval "$(starship init bash)"' >> $BASHRC}
+        echo 'eval "$(starship init bash)"' >> ${BASHRC}
     fi
 
     echo "Adding Configuration"
@@ -48,7 +51,7 @@ install_neovim () {
     echo
     #Compiling from source due to lazy.vim version requirements
     echo "--- Installing [Neovim] ---"
-    sudo apt-get install ninja-build gettext cmake unzip curl
+    sudo apt-get install ninja-build gettext cmake unzip curl -y
     git clone https://github.com/neovim/neovim
     cd neovim/
     git checkout stable
@@ -63,12 +66,17 @@ install_neovim () {
     ln -s /usr/local/bin/nvim /usr/bin/nvim
 
     #Plugins and dependencies
-    sudo apt-get install python3-venv \ #For python LSP
+    sudo apt install -y python3-venv \ #For python LSP
                          ripgrep #For Telescope
 
     echo "Configuring Neovim"
-    cp -Rv ${SCRIPT_DIR}/neovim/ ${CFGDIR}
-
+    cp -Rv ${SCRIPT_DIR}/nvim/ ${CFGDIR}
+    local modified_bashrc=$(grep -Ev "^#" ${BASHRC} | fgrep 'alias vim="nvim"')
+    if [[ -n "${modified_bashrc}" ]]; then
+        echo "Neovim Already aliased"
+    else
+        echo 'alias vim="nvim"' >> ${BASHRC}
+    fi
     echo "--- Neovim Installed ---"
 }
 
