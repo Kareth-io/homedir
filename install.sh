@@ -7,12 +7,29 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 
 shopt -s nocasematch
+help () {
+    echo "[Homedir] Install workflow and home directory tools"
+    echo
+    echo "Syntax: ./install.sh [APP1, APP2, ...]"
+    echo "Available apps: starship, neovim|nvim"
+    exit 1
+}
 
 run () {
-    mkdir ${CFGDIR}
+    if [[ -z ${@} ]]; then
+        help
+    fi
+
+    if [[ ! -d ${CFGDIR} ]]; then
+        mkdir ${CFGDIR}
+    fi
+    
     echo "Installation Targets: $@"
     for target in "${@}"; do
         case ${target} in
+            -h)
+                help
+                ;;
             starship)
                 install_starship
                 ;;
