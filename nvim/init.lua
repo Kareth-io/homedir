@@ -18,7 +18,6 @@ require("plugin.telescope")
 require("plugin.treesitter")
 require("plugin.colorscheme")
 require("plugin.harpoon")
-require("plugin.lsp")
 require("plugin.fugitive")
 
 require("config.options")
